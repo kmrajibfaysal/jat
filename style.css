@@ -104,7 +104,7 @@ p {
   border: 1px solid red;
 }
 
-.btn-tab-selected {
+.active {
   color: white;
   background-color: #3b82f6;
 }
