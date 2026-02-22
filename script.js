@@ -98,7 +98,7 @@ function renderJobs(filter = 'all') {
     if (filter === 'all') return true;
     return job.status.toLowerCase() === filter;
   });
-
+  console.log(filteredJobs.length);
   if (filteredJobs.length === 0) {
     document.getElementById('emptyMessage').classList.remove('hidden');
   } else {

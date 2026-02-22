@@ -109,10 +109,15 @@ p {
   background-color: #3b82f6;
 }
 
-/* #btn-selection-all {
-    
+#emptyMessage {
+  /* display: flex; */
+  text-align: center;
+  flex-direction: column;
+  gap: 20px;
+
+  padding-top: 30px;
 }
-#btn-selection-interview {
+
+#emptyMessage img {
+  width: 100px;
 }
-#btn-selection-rejected {
-} */
