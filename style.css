@@ -1,0 +1,63 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Geist', sans-serif;
+}
+
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#count-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.count-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 30%;
+  margin: 20px 0px;
+}
+
+#interview-count {
+  color: rgb(0, 207, 0);
+}
+
+#rejected-count {
+  color: red;
+}
+
+.job {
+  padding: 24px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.btn {
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px 10px 0px;
+  cursor: pointer;
+}
+
+.btn-not-applied {
+  background-color: #eef4ff;
+}
+
+.btn-interview {
+  color: rgb(0, 207, 0);
+  border: 1px solid rgb(0, 207, 0);
+  background-color: white;
+}
