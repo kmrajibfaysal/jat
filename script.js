@@ -119,9 +119,9 @@ function renderJobs(filter = 'all') {
           </div>
           <p>${job.location} • ${job.type} • ${job.salary}</p>
           <div>
-            <button  class="btn btn-not-applied">NOT APPLIED</button
-            ><button id="interviewStatus" class="btn btn-interview hidden">Interview</button>
-            <button id="rejectedStatus" class="btn btn-rejected hidden">Rejected</button>
+            <button  class="btn btn-not-applied notAppliedStatus">NOT APPLIED</button
+            ><button  class="btn btn-interview hidden interviewStatus">Interview</button>
+            <button " class="btn btn-rejected hidden rejectedStatus">Rejected</button>
           </div>
           <p>
             ${job.description}
@@ -132,6 +132,20 @@ function renderJobs(filter = 'all') {
           </div>
       `;
       jobsContainer.appendChild(card);
+
+      const notAppliedStatus = card.querySelector('.notAppliedStatus');
+      const interviewStatus = card.querySelector('.interviewStatus');
+      const rejectedStatus = card.querySelector('.rejectedStatus');
+
+      if (job.status === 'Not Applied') {
+        notAppliedStatus.classList.remove('hidden');
+      } else if (job.status === 'Interview') {
+        interviewStatus.classList.remove('hidden');
+        notAppliedStatus.classList.add('hidden');
+      } else if (job.status === 'Rejected') {
+        rejectedStatus.classList.remove('hidden');
+        notAppliedStatus.classList.add('hidden');
+      }
 
       card
         .querySelector('.interview')
@@ -148,17 +162,17 @@ function renderJobs(filter = 'all') {
 
 function updateStatus(index, status) {
   let job = jobs[index];
-  const interViewStatus = document.querySelector('#interviewStatus');
-  const rejectedStatus = document.querySelector('#rejectedStatus');
   if (job.status === 'Interview') interviewCount--;
   if (job.status === 'Rejected') rejectedCount--;
 
   job.status = status;
 
-  console.log(interviewCountEl);
-
-  if (status === 'Interview') interviewCount++;
-  if (status === 'Rejected') rejectedCount++;
+  if (status === 'Interview') {
+    interviewCount++;
+  }
+  if (status === 'Rejected') {
+    rejectedCount++;
+  }
 
   interviewCountEl.textContent = interviewCount;
   rejectedCountEl.textContent = rejectedCount;
