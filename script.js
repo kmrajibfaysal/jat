@@ -86,12 +86,104 @@ const jobs = [
 let interviewCount = 0;
 let rejectedCount = 0;
 
-const jobsContainer = document.querySelector('.job-container');
+const jobsContainer = document.querySelector('.jobs-container');
 const totalCountEl = document.querySelector('.total-count');
-const interviewCountEl = document.querySelector('.interview-count');
-const rejectedCountEl = document.querySelector('.rejected-count');
+const interviewCountEl = document.querySelector('#interview-count');
+const rejectedCountEl = document.querySelector('#rejected-count');
 
 function renderJobs(filter = 'all') {
-    jobsContainer.innerHTML = '';
-    
+  jobsContainer.innerHTML = '';
+  let filteredJobs = jobs.filter((job) => {
+    if (filter === 'all') return true;
+    return job.status.toLowerCase() === filter;
+  });
+
+  if (filteredJobs.length === 0) {
+    document.getElementById('emptyMessage').classList.remove('hidden');
+  } else {
+    document.getElementById('emptyMessage').classList.add('hidden');
+    filteredJobs.forEach((job, index) => {
+      const card = document.createElement('div');
+      card.className = 'job';
+      card.innerHTML = `
+        <div class="job-header">
+            <div>
+              <h3>${job.company}</h3>
+              <p>${job.position}</p>
+            </div>
+            <div>
+              <button class="btn-delete delete">
+                <img src="./assets/delete.png" alt="" />
+              </button>
+            </div>
+          </div>
+          <p>${job.location} • ${job.type} • ${job.salary}</p>
+          <div>
+            <button  class="btn btn-not-applied">NOT APPLIED</button
+            ><button id="interviewStatus" class="btn btn-interview hidden">Interview</button>
+            <button id="rejectedStatus" class="btn btn-rejected hidden">Rejected</button>
+          </div>
+          <p>
+            ${job.description}
+          </p>
+          <div>
+            <button class="btn btn-interview interview">Interview</button>
+            <button class="btn btn-rejected rejected">Rejected</button>
+          </div>
+      `;
+      jobsContainer.appendChild(card);
+
+      card
+        .querySelector('.interview')
+        .addEventListener('click', () => updateStatus(index, 'Interview'));
+      card
+        .querySelector('.rejected')
+        .addEventListener('click', () => updateStatus(index, 'Rejected'));
+      card
+        .querySelector('.delete')
+        .addEventListener('click', () => deleteJob(index));
+    });
+  }
 }
+
+function updateStatus(index, status) {
+  let job = jobs[index];
+  const interViewStatus = document.querySelector('#interviewStatus');
+  const rejectedStatus = document.querySelector('#rejectedStatus');
+  if (job.status === 'Interview') interviewCount--;
+  if (job.status === 'Rejected') rejectedCount--;
+
+  job.status = status;
+
+  console.log(interviewCountEl);
+
+  if (status === 'Interview') interviewCount++;
+  if (status === 'Rejected') rejectedCount++;
+
+  interviewCountEl.textContent = interviewCount;
+  rejectedCountEl.textContent = rejectedCount;
+  renderJobs(document.querySelector('.tab.active').dataset.tab);
+}
+
+function deleteJob(index) {
+  let job = jobs[index];
+  if (job.status === 'Interview') interviewCount--;
+  if (job.status === 'Rejected') rejectedCount--;
+  jobs.splice(index, 1);
+  totalCountEl.textContent = jobs.length;
+  renderJobs(document.querySelector('.tab.active').dataset.tab);
+}
+
+document.querySelectorAll('.tab').forEach((tab) => {
+  tab.addEventListener('click', () => {
+    document
+      .querySelectorAll('.tab')
+      .forEach((t) => t.classList.remove('active'));
+    tab.classList.add('active');
+    renderJobs(tab.dataset.tab);
+  });
+});
+
+totalCountEl.textContent = jobs.length;
+
+renderJobs();
