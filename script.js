@@ -90,6 +90,7 @@ const jobsContainer = document.querySelector('.jobs-container');
 const totalCountEl = document.querySelector('.total-count');
 const interviewCountEl = document.querySelector('#interview-count');
 const rejectedCountEl = document.querySelector('#rejected-count');
+const tabCount = document.querySelector('.tabCount');
 
 function renderJobs(filter = 'all') {
   jobsContainer.innerHTML = '';
@@ -185,6 +186,7 @@ function deleteJob(index) {
   if (job.status === 'Rejected') rejectedCount--;
   jobs.splice(index, 1);
   totalCountEl.textContent = jobs.length;
+  tabCount.textContent = jobs.length;
   interviewCountEl.textContent = interviewCount;
   rejectedCountEl.textContent = rejectedCount;
   renderJobs(document.querySelector('.tab.active').dataset.tab);
@@ -201,5 +203,6 @@ document.querySelectorAll('.tab').forEach((tab) => {
 });
 
 totalCountEl.textContent = jobs.length;
+tabCount.textContent = jobs.length;
 
 renderJobs();
