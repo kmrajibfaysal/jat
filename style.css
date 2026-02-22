@@ -15,6 +15,10 @@ p {
   color: #64748bff;
 }
 
+.hidden {
+  display: none;
+}
+
 #count-container {
   display: flex;
   gap: 20px;
