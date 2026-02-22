@@ -19,7 +19,7 @@
       <div id="count-container">
         <div class="count-card">
           <h6>Total</h6>
-          <h2 id="total-count">8</h2>
+          <h2 class="total-count">8</h2>
         </div>
         <div class="count-card">
           <h6>Interview</h6>
@@ -33,6 +33,43 @@
     </header>
     <!-- Job collections -->
 
+    <section>
+      <div class="total-jobs-header">
+        <h2>Available Jobs</h2>
+        <p class="total-count">8 jobs</p>
+      </div>
+      <div>
+        <button id="btn-selection-all" class="btn btn-tab-selected">All</button>
+        <button id="btn-selection-interview" class="btn">Interview</button>
+        <button id="btn-selection-rejected" class="btn">Rejected</button>
+      </div>
+      <div class="job-container">
+        <div></div>
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <h3>Mobile First Corp</h3>
+              <p>React Native Developer</p>
+            </div>
+            <div>
+              <button class="btn-delete">
+                <img src="./assets/delete.png" alt="" />
+              </button>
+            </div>
+          </div>
+          <p>Remote • Full-time • $130,000 - $175,000</p>
+          <div><button class="btn btn-not-applied">NOT APPLIED</button></div>
+          <p>
+            Build cross-platform mobile applications using React Native. Work on
+            products used by millions of users worldwide.
+          </p>
+          <div>
+            <button class="btn btn-interview">Interview</button>
+            <button class="btn btn-rejected">Rejected</button>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Javascript integration -->
     <script src="./script.js"></script>
   </body>

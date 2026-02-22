@@ -11,6 +11,10 @@ body {
   padding: 20px;
 }
 
+p {
+  color: #64748bff;
+}
+
 #count-container {
   display: flex;
   gap: 20px;
@@ -33,6 +37,16 @@ body {
   color: red;
 }
 
+.job-container {
+  padding: 10px 0px;
+}
+
+.total-jobs-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px 0px 0px;
+}
+
 .job {
   padding: 24px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -42,12 +56,30 @@ body {
   gap: 5px;
 }
 
+.job-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.job-header img {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-delete {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 99999px;
+}
+
 .btn {
   text-transform: uppercase;
   font-weight: bold;
   border: none;
   border-radius: 5px;
-  padding: 10px;
+  padding: 10px 20px;
   margin: 10px 10px 10px 0px;
   cursor: pointer;
 }
@@ -61,3 +93,22 @@ body {
   border: 1px solid rgb(0, 207, 0);
   background-color: white;
 }
+
+.btn-rejected {
+  color: red;
+  background-color: white;
+  border: 1px solid red;
+}
+
+.btn-tab-selected {
+  color: white;
+  background-color: #3b82f6;
+}
+
+/* #btn-selection-all {
+    
+}
+#btn-selection-interview {
+}
+#btn-selection-rejected {
+} */
