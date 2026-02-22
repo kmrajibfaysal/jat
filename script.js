@@ -1,13 +1,3 @@
-// {
-//     company: 'Mobile First Corp',
-//     position: 'React Native Developer',
-//     location: 'Remote',
-//     type: 'Full-time',
-//     salary: '$130,000 - $175,000',
-//     description: 'Build cross-platform mobile applications using React Native.',
-//     status: 'Not Applied',
-//   },
-
 const jobs = [
   {
     company: 'Mobile First Corp',
@@ -98,7 +88,7 @@ function renderJobs(filter = 'all') {
     if (filter === 'all') return true;
     return job.status.toLowerCase() === filter;
   });
-  console.log(filteredJobs.length);
+
   if (filteredJobs.length === 0) {
     document.getElementById('emptyMessage').classList.remove('hidden');
   } else {
@@ -159,6 +149,8 @@ function renderJobs(filter = 'all') {
         .addEventListener('click', () => deleteJob(index));
     });
   }
+
+  tabCount.textContent = filteredJobs.length;
 }
 
 function updateStatus(index, status) {
@@ -186,7 +178,6 @@ function deleteJob(index) {
   if (job.status === 'Rejected') rejectedCount--;
   jobs.splice(index, 1);
   totalCountEl.textContent = jobs.length;
-  tabCount.textContent = jobs.length;
   interviewCountEl.textContent = interviewCount;
   rejectedCountEl.textContent = rejectedCount;
   renderJobs(document.querySelector('.tab.active').dataset.tab);
@@ -203,6 +194,5 @@ document.querySelectorAll('.tab').forEach((tab) => {
 });
 
 totalCountEl.textContent = jobs.length;
-tabCount.textContent = jobs.length;
 
 renderJobs();
